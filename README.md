@@ -1,49 +1,45 @@
-# Apeperia <a name="readme-top"></a>
-![Static Badge](https://img.shields.io/badge/status-completed-green?style=for-the-badge)
+# Apeperia
 
-## Introduction
-**Apeperia** is a company specializing in creating and maintaining applications for companies. This dynamic website, developed with HTML, CSS, and JavaScript, interactively presents Apeperia's services, with detailed descriptions of the plans and benefits offered, as well as a user-friendly interface for new and potential customers.
+A landing page for a fictional app-development company, built with HTML, CSS and JavaScript and no framework. The page has a hero section, benefits, pricing plans, a blog carousel, a contact form and a newsletter dialog. A lot of the work went into making it usable with a keyboard and a screen reader.
 
-## Live Application
-[Apeperia Demonstration](https://apeperia-one-blue.vercel.app)
+**Live demo:** [apeperia-one-blue.vercel.app](https://apeperia-one-blue.vercel.app)
 
-## Table of Contents
-- [Installation](#installation)
-- [Usage](#usage)
-- [Features](#features)
-- [Technologies](#technologies)
-- [Contributors](#contributors)
+## What's inside
 
-## Installation
+- **Accessible modal.** The newsletter dialog has `role="dialog"` and an `aria-labelledby` title. Opening it moves focus inside and makes the rest of the page `inert`, so Tab cannot leave it. Esc, the close button or a click on the overlay closes it, and focus returns to the button that opened it. The `inert` attribute is backed by the W3C polyfill in `js/inert.js` for older browsers.
+- **Blog carousel.** Controls are real links, the visible slide is switched in `carousel.js`, and a visually hidden "(Slide atual)" label tells screen readers which slide is showing.
+- **Form validation.** Native HTML5 validation, with a custom message and error styling on the ZIP code field (`validacao-cep.js`).
+- **Email typo suggestions.** The [Mailcheck](https://github.com/mailcheck/mailcheck) library suggests a fix when someone types `gmial.com`, and the suggestion is announced with `role="alert"`.
+- **Video with subtitles.** A `<video>` with a Brazilian Portuguese `.vtt` track.
+- **CSS split by section.** Fifteen small stylesheets (header, plans, blog, contact, dialog and so on), with a shared theme file and media queries for smaller screens.
 
-### Prerequisites
-- Web browser
-- Code editor (optional for local development)
+The page is in Portuguese.
 
-### Steps to run
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/victorhubarb/apeperia.git
-   cd apeperia
-   ```
-2. Open the `index.html` file in your browser to view the site.
+## Run it
 
-## Usage
-**Apeperia's** website allows users to explore the services offered by the company, including mobile and web application development plans. The site offers plan descriptions, benefit sections, and a contact page with an interactive form.
+No build step and no dependencies. Clone the repo and open `index.html` in a browser.
 
-## Features
-- **Interactive Home Page**: With full-width banner and intuitive navigation.
-- **Benefits Section**: Highlights of the main reasons to choose Apeperia's services.
-- **Plans Section**: Cards with details about the plans offered, including prices and services.
-- **Blog and Highlights**: Carousel of blog posts and highlight cards with news and updates.
-- **Contact Form**: With JavaScript validations to ensure data integrity.
+```bash
+git clone https://github.com/victorhubarb/apeperia.git
+cd apeperia
+```
 
-## Technologies
-- **HTML5**
-- **CSS3**
-- **JavaScript**
-- **Bootstrap**
+## Project structure
 
-## Contributors
-- [Victor Barbosa](https://github.com/victorhubarb)
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+```
+index.html
+css/   One stylesheet per section, plus reset and theme
+js/    carousel, dialog, inert (polyfill), mailcheck (library), validacao-cep, mailcheck-config
+img/   Images, video and subtitle file
+```
+
+## Known gaps
+
+- The code uses `var` and `keyCode`, in an older JavaScript style.
+- The form does not send anywhere, because there is no backend.
+- Blog links point to a site that no longer exists.
+- Fonts are loaded from Google Fonts, so the page needs a connection to look right.
+
+---
+
+Victor Hugo Barbosa · [GitHub](https://github.com/victorhubarb) · [LinkedIn](https://www.linkedin.com/in/victorhbarbosa/)
